@@ -1,18 +1,19 @@
-import { PokemonServices } from "@app/services/Pokemon.service";
 import {
   usePokemonListAction,
   usePokemonListStore,
 } from "@app/store/PokemonList.store";
+import { QueryString } from "@app/utils/queryUtils";
 import { useCallback, useEffect } from "react";
 
 export const usePokemonListUtils = () => {
-  const { increasePokemonAction, getListPokemon, renamePokemonAction } = usePokemonListAction();
+  const { offset } = QueryString();
+  const { getListPokemon } = usePokemonListAction();
 
   const getPokemon: any = usePokemonListStore((state: any) => state.list);
-  const getName: any = usePokemonListStore((state: any) => state.name);
 
-  const increaseHandler = useCallback(() => getListPokemon(), []);
-  const renameHandler = useCallback((name: any) => renamePokemonAction(name), []);
+  useEffect(() => {
+    getListPokemon();
+  }, [offset]);
 
-  return { getPokemon, increaseHandler, renameHandler, getName };
+  return { getPokemon };
 };

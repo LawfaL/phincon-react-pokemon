@@ -1,0 +1,31 @@
+.phincon-button {
+    @apply m-md p-md rounded-full;
+}
+
+.phincon-button__primary {
+    @apply bg-primary
+}
+
+.phincon-button__secondary {
+    @apply bg-secondary
+}
+
+.phincon-button__danger {
+    @apply bg-danger text-light
+}
+
+.phincon-button__sm {
+    @apply text-sm
+}
+
+.phincon-button__md {
+    @apply text-lg
+}
+
+.phincon-button__lg {
+    @apply text-xl
+}
+
+.phincon-button__lg {
+    @apply text-2xl
+}

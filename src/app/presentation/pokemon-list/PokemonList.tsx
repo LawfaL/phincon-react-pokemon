@@ -1,25 +1,29 @@
 import { memo } from "react";
 import { usePokemonListUtils } from "./PokemonList.utils";
+import styles from "./PokemonList.module.css";
+import { useNavigate } from "react-router-dom";
 
 const PokemonListMemo = () => {
-  const { getPokemon, getName, renameHandler, increaseHandler } =
-    usePokemonListUtils();
+  const navigate = useNavigate()
+  const { getPokemon } = usePokemonListUtils();
   return (
     <>
-      <h1 className="use-pokefont text-xl">Pokemon</h1>
-      <p className="use-bitfont mt-lg">Gotta Catch 'Em All</p>
-      {getName}
-
-      {getPokemon.map((q: any, index: number) => (
-        <p key={`poke-ent-${index}`} className="use-bitfont mt-lg">{q.name}</p>
-      ))}
-
-      <button onClick={() => increaseHandler()}>Increase Pokemon</button>
-      <input
-        type="text"
-        onChange={(e) => renameHandler(e.target.value)}
-        name="asd"
-      />
+      <section className={styles["phincon-pokemon-list__main-content"]}>
+        <div className={styles["phincon-pokemon-list__wrapper"]}>
+          {getPokemon.map((q: any, index: number) => (
+            <div className={styles["phincon-pokemon-card__wrapper"]} onClick={() => navigate(`/detail/${q.name}`)}>
+              <img
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+                  index + 1
+                }.png`}
+              />
+              <p key={`poke-ent-${index}`} className="use-bitfont text-xs">
+                {q.name}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
     </>
   );
 };
