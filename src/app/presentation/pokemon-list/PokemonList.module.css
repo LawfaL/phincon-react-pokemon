@@ -1,0 +1,19 @@
+.phincon-pokemon-list__main-content {
+    @apply w-full lg:w-1/2 m-auto p-xl
+}
+
+.phincon-pokemon-list__wrapper {
+    @apply grid grid-cols-2 lg:grid-cols-4 gap-md h-2/3 overflow-auto
+}
+
+.phincon-pokemon-card__wrapper{
+    @apply flex flex-col items-center justify-center border border-solid p-md;
+}
+
+.phincon-pokemon-card__wrapper:hover {
+    @apply cursor-pointer
+}
+
+.phincon-input__text {
+    @apply focus:outline-none my-xl border-b-2 p-sm w-full
+}
