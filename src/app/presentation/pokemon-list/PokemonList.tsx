@@ -1,28 +1,47 @@
-import { memo } from "react";
+import { memo, useCallback, useRef } from "react";
 import { usePokemonListUtils } from "./PokemonList.utils";
 import styles from "./PokemonList.module.css";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@app/components/button/Button";
+import { PokemonCard } from "@app/components/pokemon-card/PokemonCard";
 
 const PokemonListMemo = () => {
-  const navigate = useNavigate()
-  const { getPokemon } = usePokemonListUtils();
+  const navigate = useNavigate();
+  const { pokemonList, canLoad, offset, nextHandler } = usePokemonListUtils();
+
   return (
     <>
       <section className={styles["phincon-pokemon-list__main-content"]}>
         <div className={styles["phincon-pokemon-list__wrapper"]}>
-          {getPokemon.map((q: any, index: number) => (
-            <div className={styles["phincon-pokemon-card__wrapper"]} onClick={() => navigate(`/detail/${q.name}`)}>
-              <img
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-                  index + 1
-                }.png`}
-              />
-              <p key={`poke-ent-${index}`} className="use-bitfont text-xs">
-                {q.name}
-              </p>
-            </div>
+          {pokemonList.map((q: any, index: number) => (
+            <PokemonCard
+              key={`poke-card-${index}`}
+              name={q.name}
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+                Number(offset) + index + 1
+              }.png`}
+              action={() => navigate(`/detail/${q.name}`)}
+            />
           ))}
         </div>
+        <footer className="my-lg">
+          <Button
+            className="font-bold"
+            label="Back"
+            size="sm"
+            variant="primary"
+            onClick={() => nextHandler("back")}
+            disabled={offset == '0'}
+          />
+          <Button
+            className="font-bold"
+            label="Next"
+            size="sm"
+            variant="primary"
+            onClick={() => nextHandler("next")}
+            disabled={!canLoad}
+          />
+        </footer>
       </section>
     </>
   );

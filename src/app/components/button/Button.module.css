@@ -1,9 +1,13 @@
 .phincon-button {
-    @apply m-md p-md rounded-full;
+    @apply m-md p-md rounded-lg px-xl;
 }
 
 .phincon-button__primary {
-    @apply bg-primary
+    @apply bg-primary text-light
+}
+
+.phincon-button__primary:disabled {
+    @apply bg-primary text-light opacity-50
 }
 
 .phincon-button__secondary {
@@ -15,7 +19,7 @@
 }
 
 .phincon-button__sm {
-    @apply text-sm
+    @apply text-sm 
 }
 
 .phincon-button__md {

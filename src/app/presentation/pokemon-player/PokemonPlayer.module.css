@@ -5,7 +5,3 @@
 .phincon-pokemon-list__wrapper {
     @apply grid grid-cols-2 lg:grid-cols-4 gap-md h-[75vh] overflow-auto px-md
 }
-
-.phincon-input__text {
-    @apply focus:outline-none my-xl border-b-2 p-sm w-full
-}
