@@ -3,8 +3,8 @@ import styles from "./PokemonBall.module.css";
 
 const PokemonBallMemo = () => {
   return (
-    <div className={styles["poke"]}>
-      <div className={styles["button"]}></div>
+    <div className={styles["phincon-pokeball"]}>
+      <div className={styles["phincon-pokeball__button"]}></div>
     </div>
   );
 };

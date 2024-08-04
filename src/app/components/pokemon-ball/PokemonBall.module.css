@@ -1,15 +1,19 @@
-.poke { 
+.phincon-pokeball { 
     @apply w-full relative w-24 h-24 rounded-full bg-black overflow-hidden m-auto
 }
 
-.poke::before {
+.phincon-pokeball:hover {
+    @apply cursor-pointer
+}
+
+.phincon-pokeball::before {
     content: "";
     @apply absolute w-full h-[45%] bg-red-700 left-0;
 }
-.poke::after {
+.phincon-pokeball::after {
     content: "";
     @apply absolute bottom-0 w-full h-[45%] bg-gray-300 left-0;
 }
-.button {
+.phincon-pokeball__button {
     @apply box-border bg-gray-300 w-10 h-10 z-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full border-8 border-black;
 }

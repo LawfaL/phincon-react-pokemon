@@ -1,0 +1,7 @@
+.phincon-pokemon-card__wrapper{
+    @apply flex flex-col items-center justify-center border border-solid p-md;
+}
+
+.phincon-pokemon-card__wrapper:hover {
+    @apply cursor-pointer
+}
