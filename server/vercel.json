@@ -9,6 +9,10 @@
     "rewrites": [
         {
             "source": "/(.*)",
+            "destination": "/dist"
+        },
+        {
+            "source": "/api/(.*)",
             "destination": "/interface/routes"
         }
     ]
