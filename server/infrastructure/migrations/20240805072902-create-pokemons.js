@@ -13,6 +13,22 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
+      image: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      type: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      moves: {
+        allowNull: false,
+        type: Sequelize.TEXT
+      },
+      abilities: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
       hp: {
         allowNull: false,
         type: Sequelize.INTEGER

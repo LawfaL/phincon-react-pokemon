@@ -5,7 +5,17 @@ const { checkPrime } = require("node:crypto");
 const pokemonController = {
   list: async (_, res) => {
     return db.Pokemons.findAll({})
-      .then((data) => res.status(200).send(data))
+      .then((data) =>
+        res.status(200).send({ data, message: "Get List Successfully!" })
+      )
+      .catch((error) => res.status(400).send(error));
+  },
+  find: async (req, res) => {
+    const id = req.params.id;
+    return db.Pokemons.findByPk(id)
+      .then((data) =>
+        res.status(200).send({ data, message: "Get Data Successfully!" })
+      )
       .catch((error) => res.status(400).send(error));
   },
   create: async (req, res) => {
@@ -27,7 +37,6 @@ const pokemonController = {
     const fibNumber = fibSequence(Number(req.body.renameCounter) + 1);
     db.Pokemons.update(
       {
-        ...req.body,
         renameCounter: Number(req.body.renameCounter) + 1,
         name: `${req.body.name}-${fibNumber}`,
       },
@@ -38,7 +47,7 @@ const pokemonController = {
           res.status(201).send({ message: "data updated successfully" });
         else res.status(400).send({ message: "data not found" });
       })
-      .catch((error) => res.status(500).send(error));
+      .catch((error) => res.status(500).send(error.message));
   },
   delete: async (req, res) => {
     const id = req.params.id;
@@ -49,17 +58,19 @@ const pokemonController = {
         db.Pokemons.destroy({ where: { id } })
           .then((data) => {
             if (data > 0)
-              res
-                .status(201)
-                .send({
-                  message: `berhasil melepaskan pokemon (throw prime number is ${random})`,
-                });
+              res.status(201).send({
+                message: `Berhasil melepaskan pokemon`,
+                prime: random,
+                result: 'success',
+              });
             else res.status(400).send({ message: "data not found" });
           })
           .catch((error) => res.status(500).send(error));
       } else {
         res.status(201).send({
-          message: `gagal melepaskan pokemon ${random}`,
+          message: `Gagal melepaskan pokemon`,
+          prime: random,
+          result: 'failed',
         });
       }
     });

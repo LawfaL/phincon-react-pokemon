@@ -1,7 +1,7 @@
 .phincon-pokemon-list__main-content {
-    @apply w-full m-auto my-xl
+    @apply w-full my-xl
 }
 
 .phincon-pokemon-list__wrapper {
-    @apply grid grid-cols-2 lg:grid-cols-4 gap-md h-[75vh] overflow-auto px-md
+    @apply grid grid-cols-2 lg:grid-cols-4 gap-md max-h-[75vh] overflow-auto px-md
 }

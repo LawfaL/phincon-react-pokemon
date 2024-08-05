@@ -1,10 +1,12 @@
 require('dotenv').config({path: `${process.cwd()}/.env`});
+var cors = require('cors')
 
 const express = require("express")
 const app = express()
 const db = require('./infrastructure/database')
 
 app.use(express.json())
+app.use(cors())
 
 const pokemonRouter = require('./interface/routes/pokemon.route');
 

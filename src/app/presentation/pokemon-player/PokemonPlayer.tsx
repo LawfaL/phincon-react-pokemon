@@ -3,44 +3,24 @@ import { usePokemonPlayerUtils } from "./PokemonPlayer.utils";
 import { useNavigate } from "react-router-dom";
 import { PokemonCard } from "@app/components/pokemon-card/PokemonCard";
 import styles from "./PokemonPlayer.module.css";
-import { Button } from "@app/components/button/Button";
+import { IPokemonEntity } from "@app/_types/Pokemon.type";
 
 const PokemonPlayer = () => {
   const navigate = useNavigate();
-  const { nextHandler, pokemonList, offset, canLoad } = usePokemonPlayerUtils();
+  const { pokemonList, getPokemonDetail } = usePokemonPlayerUtils();
 
   return (
     <section className={styles["phincon-pokemon-list__main-content"]}>
       <div className={styles["phincon-pokemon-list__wrapper"]}>
-        {pokemonList.map((q: any, index: number) => (
+        {pokemonList.map((q: IPokemonEntity, index: number) => (
           <PokemonCard
             key={`poke-card-${index}`}
             name={q.name}
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-              Number(offset) + index + 1
-            }.png`}
-            action={() => navigate(`/detail/${q.name}`)}
+            src={q.image}
+            action={() => getPokemonDetail(q)}
           />
         ))}
       </div>
-      <footer className="my-lg">
-        <Button
-          className="font-bold"
-          label="Back"
-          size="sm"
-          variant="primary"
-          onClick={() => nextHandler("back")}
-          disabled={offset == "0"}
-        />
-        <Button
-          className="font-bold"
-          label="Next"
-          size="sm"
-          variant="primary"
-          onClick={() => nextHandler("next")}
-          disabled={!canLoad}
-        />
-      </footer>
     </section>
   );
 };

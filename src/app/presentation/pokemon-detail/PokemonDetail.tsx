@@ -1,10 +1,9 @@
 import { memo } from "react";
 import { usePokemonDetailUtils } from "./PokemonDetail.utils";
-import { Button } from "@app/components/button/Button";
 import { PokemonBall } from "@app/components/pokemon-ball/PokemonBall";
 
 const PokemonDetailMemo = () => {
-  const { pokemonInfo } = usePokemonDetailUtils();
+  const { pokemonInfo, catchPokemonHandler } = usePokemonDetailUtils();
   return (
     <section className="flex justify-center items-center">
       <div className="border border-solid rounded-xl my-xl flex flex-col items-center justify-center shadow-lg">
@@ -44,7 +43,7 @@ const PokemonDetailMemo = () => {
 
         <div className="mb-xl">
           <p className="font-bold use-pokefont my-lg text-sm">Click Here to Catch!!</p>
-          <PokemonBall />
+          <PokemonBall catchPokemon={catchPokemonHandler}/>
         </div>
 
         {/* <Button label="Catch this Pokemon!" size="xl" variant="danger" onClick={() => null} /> */}
