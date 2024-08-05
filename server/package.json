@@ -1,6 +1,7 @@
 {
     "scripts": {
-        "start": "nodemon index"
+        "start": "nodemon index",
+        "build": "node index"
     },
     "dependencies": {
         "cors": "^2.8.5",

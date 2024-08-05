@@ -24,7 +24,7 @@ app.use('*', (req, res, next) => {
     })
 })
 
-const PORT = process.env.APP_PORT || 8080
+const PORT = process.env.APP_PORT || 3000
 
 app.listen(PORT, () => {
     console.log('app is running')
