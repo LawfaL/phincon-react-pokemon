@@ -1,4 +1,6 @@
-export const usePokemonDetailTransformer = (data: any) => {
+import { PokemonDetailTransformer } from "./PokemonDetailTransformer.type";
+
+export const usePokemonDetailTransformer = (data: any): PokemonDetailTransformer => {
   return {
     name: data.name,
     image: data.sprites.other["official-artwork"].front_default,
