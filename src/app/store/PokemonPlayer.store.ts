@@ -39,9 +39,7 @@ export const usePokemonPlayerAction = () => {
         const { name, image, type } = data;
         Swal.fire({
           title: name,
-          text: type,
           imageUrl: image,
-          imageAlt: type,
           showDenyButton: true,
           showCancelButton: true,
           showConfirmButton: true,
@@ -93,12 +91,12 @@ export const usePokemonPlayerAction = () => {
               },
             }).then((result) => {
               if (result.isConfirmed && result.value.result == "success") {
-                getListPokemon()
+                getListPokemon();
               } else {
                 Swal.fire({
-                  icon: 'error',
+                  icon: "error",
                   title: result.value.message,
-                  text: `Lemparan dadu (${result.value.prime}) bukan bilangan prima`
+                  text: `Lemparan dadu (${result.value.prime}) bukan bilangan prima`,
                 });
               }
             });

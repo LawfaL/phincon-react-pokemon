@@ -18,6 +18,10 @@
     @apply bg-danger text-light
 }
 
+.phincon-button__danger:disabled {
+    @apply bg-danger text-light opacity-50
+}
+
 .phincon-button__sm {
     @apply text-sm 
 }
