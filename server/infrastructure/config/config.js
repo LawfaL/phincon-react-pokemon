@@ -1,5 +1,4 @@
 require("dotenv").config({ path: `${process.cwd()}/.env` });
-const fs = require("fs");
 
 module.exports = {
   development: {
@@ -19,11 +18,11 @@ module.exports = {
     dialect: "postgres",
   },
   production: {
-    username: process.env.PROD_DB_USERNAME,
-    password: process.env.PROD_DB_PASSWORD,
-    database: process.env.PROD_DB_NAME,
-    host: process.env.PROD_DB_HOSTNAME,
-    port: process.env.PROD_DB_PORT,
+    username: process.env.POSTGRES_USER,
+    password: process.env.POSTGRES_PASSWORD,
+    database: process.env.POSTGRES_DATABASE,
+    host: process.env.POSTGRES_HOST,
+    port: 5432,
     dialect: "postgres",
   },
 };
