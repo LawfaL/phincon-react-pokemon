@@ -77,7 +77,7 @@ export const usePokemonDetailAction = () => {
           }
         });
       })
-      .catch((e) => {
+      .catch(() => {
         Swal.fire({
           title: `Gagal Menangkap ${sanitize.name}!`,
           icon: "error",
