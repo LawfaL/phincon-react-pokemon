@@ -14,11 +14,11 @@ axiosInterceptorInstance.interceptors.request.use(async (config: any) => ({
 
 axiosInterceptorInstance.interceptors.response.use(
   (response: any) => response,
-  async () => {
-    // if (error.response?.data) {
-    //   return Promise.reject(Error(error.response.data.message));
-    // }
+  async (error) => {
+    if (error.response?.data) {
+      return Promise.reject(Error(error.response.data.message));
+    }
 
-    // return Promise.reject(Error(error.message));
+    return Promise.reject(Error(error.message));
   }
 );

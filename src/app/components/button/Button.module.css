@@ -1,5 +1,5 @@
 .phincon-button {
-    @apply m-md p-md rounded-lg px-xl;
+    @apply m-md p-md rounded-lg lg:px-xl;
 }
 
 .phincon-button__primary {
@@ -23,7 +23,7 @@
 }
 
 .phincon-button__sm {
-    @apply text-sm 
+    @apply text-xs lg:text-sm 
 }
 
 .phincon-button__md {
