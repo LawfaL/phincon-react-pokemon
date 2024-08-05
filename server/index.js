@@ -11,6 +11,7 @@ app.use(cors())
 const pokemonRouter = require('./interface/routes/pokemon.route');
 
 app.use("/api/v1/pokemon", pokemonRouter)
+app.use(express.static("dist"))
 
 db.authenticate()
   .then(() => console.log("DB Connected"))

@@ -1,4 +1,4 @@
-import { memo, useMemo } from "react";
+import { memo } from "react";
 import styles from "./Button.module.css";
 import { IButton } from "./Button.type";
 import clsx from "clsx";

@@ -1,4 +1,4 @@
-import { memo, useCallback, useRef } from "react";
+import { memo } from "react";
 import { usePokemonListUtils } from "./PokemonList.utils";
 import styles from "./PokemonList.module.css";
 import { useNavigate } from "react-router-dom";
