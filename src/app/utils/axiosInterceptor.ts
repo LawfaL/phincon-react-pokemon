@@ -15,7 +15,6 @@ axiosInterceptorInstance.interceptors.request.use(async (config: any) => ({
 axiosInterceptorInstance.interceptors.response.use(
   (response: any) => response,
   async (error: any) => {
-    console.log(error)
     // if (error.response?.data) {
     //   return Promise.reject(Error(error.response.data.message));
     // }

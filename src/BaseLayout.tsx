@@ -17,8 +17,8 @@ const BaseLayout: React.FC<any> = ({ children }: any) => {
           disabled={location.pathname == "/"}
         />
         <div>
-          <p className="use-pokefont text-3xl">Pokemon</p>
-          <p className="use-bitfont mt-lg text-md">Gotta Catch 'Em All</p>
+          <p className="use-pokefont text-2xl lg:text-3xl">Pokemon</p>
+          <p className="use-bitfont mt-lg text-xs lg:text-md">Gotta Catch 'Em All</p>
         </div>
         <Button
           className={`text-nowrap font-bold`}

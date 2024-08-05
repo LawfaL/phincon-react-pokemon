@@ -9,7 +9,6 @@ export const usePokemonPlayerStore = create<IPokemonPlayerStore>(() => ({
   detail: null,
   loading: false,
   error: false,
-  hasMore: false,
 }));
 
 export const usePokemonPlayerAction = () => {
@@ -25,18 +24,17 @@ export const usePokemonPlayerAction = () => {
         usePokemonPlayerStore.setState(() => ({
           list: data.data,
           loading: false,
-          hasMore: data.next != null,
           error: false,
         }))
       );
   };
 
   const getPokemonDetail = (detail: IPokemonEntity) => {
-    const { id, renameCounter } = detail;
+    const { id, renameCount } = detail;
     PlayerServices.find(id)
       .then((res) => res.data.data)
       .then((data) => {
-        const { name, image, type } = data;
+        const { name, image } = data;
         Swal.fire({
           title: name,
           imageUrl: image,
@@ -61,7 +59,7 @@ export const usePokemonPlayerAction = () => {
                 await PlayerServices.Update({
                   name: rename,
                   id,
-                  renameCounter,
+                  renameCount,
                 });
               },
               allowOutsideClick: () => !Swal.isLoading(),

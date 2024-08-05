@@ -5,9 +5,12 @@ export interface IPlayerServiceList {
   message: string;
 }
 
-export type TPlayerServicePost = Omit<
+export type TPlayerServicePost = Pick<
   IPokemonEntity,
-  "id" | "deletedAt" | "createdAt" | "updatedAt" | "renameCounter"
+  "name" | "image" | "hp" | "att" | "def"
 >;
 
-export type TPlayerServicePut = Pick<IPokemonEntity, "name" | "id" | "renameCounter">;
+export type TPlayerServicePut = Pick<
+  IPokemonEntity,
+  "name" | "id" | "renameCount"
+>;

@@ -5,6 +5,5 @@ export interface IPokemonPlayerStore {
   list: Array<IPokemonListTransformer>;
   detail: Partial<IPokemonEntity> | null;
   error: boolean;
-  hasMore: boolean;
   loading: boolean;
 }
