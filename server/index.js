@@ -10,7 +10,7 @@ app.use(cors())
 const pokemonRouter = require('./interface/routes/pokemon.route');
 
 app.use("/api/v1/pokemon", pokemonRouter)
-app.use(express.static("./dist"))
+app.use("/", express.static("dist"))
 
 app.use('*', (req, res, next) => {
     res.status(404).json({
