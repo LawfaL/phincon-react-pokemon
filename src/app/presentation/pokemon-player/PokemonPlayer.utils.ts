@@ -9,7 +9,6 @@ export const usePokemonPlayerUtils = () => {
 
   const pokemonList: any = usePokemonPlayerStore((state) => state.list);
   const loadingState: any = usePokemonPlayerStore((state) => state.loading);
-  const canLoad: any = usePokemonPlayerStore((state) => state.hasMore);
 
   useEffect(() => {
     getListPokemon();
@@ -18,7 +17,6 @@ export const usePokemonPlayerUtils = () => {
   return {
     pokemonList,
     loadingState,
-    canLoad,
     getListPokemon,
     getPokemonDetail,
   };

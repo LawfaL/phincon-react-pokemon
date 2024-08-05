@@ -2,12 +2,13 @@ import { memo } from "react";
 import { usePokemonDetailUtils } from "./PokemonDetail.utils";
 import { PokemonBall } from "@app/components/pokemon-ball/PokemonBall";
 import { Loader } from "@app/components/loader/Loader";
+import styles from "./PokemonDetail.module.css";
 
 const PokemonDetailMemo = () => {
   const { pokemonInfo, catchPokemonHandler } = usePokemonDetailUtils();
   return (
-    <section className="flex justify-center items-center">
-      <div className="border border-solid rounded-xl my-xl flex flex-col items-center justify-center shadow-lg">
+    <section className={styles["phincon-pokemon-detail__main"]}>
+      <div className={styles["phincon-pokemon-detail__card"]}>
         {!pokemonInfo ? (
           <div className="p-3xl my-3xl">
             <Loader />

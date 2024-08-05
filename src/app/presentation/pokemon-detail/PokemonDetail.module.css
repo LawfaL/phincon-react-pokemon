@@ -1,0 +1,7 @@
+.phincon-pokemon-detail__main {
+    @apply flex justify-center items-center
+}
+
+.phincon-pokemon-detail__card {
+    @apply border border-solid rounded-xl my-xl flex flex-col items-center justify-center shadow-lg
+}

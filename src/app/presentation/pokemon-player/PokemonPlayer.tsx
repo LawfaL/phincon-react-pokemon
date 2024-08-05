@@ -11,7 +11,7 @@ const PokemonPlayer = () => {
     <section className={styles["phincon-pokemon-list__main-content"]}>
       <div className={styles["phincon-pokemon-list__wrapper"]}>
         {pokemonList.map((q: IPokemonEntity, index: number) => (
-          <div>
+          <div key={`pokemon-player-${index}`}>
             <PokemonCard
               key={`poke-card-${index}`}
               name={q.name}
@@ -19,19 +19,19 @@ const PokemonPlayer = () => {
               action={() => getPokemonDetail(q)}
             />
             <div className="flex gap-md text-xs justify-center my-sm">
-              <div key={`poke-stats-${index}`}>
+              <div>
                 <p className="font-bold use-bitfont underline decoration-2">
                   HP
                 </p>
                 <p className="use-bitfont">{q.hp}</p>
               </div>
-              <div key={`poke-stats-${index}`}>
+              <div>
                 <p className="font-bold use-bitfont underline decoration-2">
                   ATT
                 </p>
                 <p className="use-bitfont">{q.att}</p>
               </div>
-              <div key={`poke-stats-${index}`}>
+              <div>
                 <p className="font-bold use-bitfont underline decoration-2">
                   DEF
                 </p>

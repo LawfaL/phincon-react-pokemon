@@ -11,7 +11,7 @@ export interface IPokemonEntity {
     str: number | string;
     spd: number | string;
     crit: number | string;
-    renameCounter: number | string;
+    renameCount: number | string;
     deletedAt: string | null;
     createdAt: string;
     updatedAt: string;

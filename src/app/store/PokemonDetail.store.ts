@@ -6,6 +6,7 @@ import { PlayerServices } from "@app/services/Player.service";
 import { PokemonDetailTransformer } from "@app/transformer/PokemonDetailTransformer.type";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { TPlayerServicePost } from "@app/services/PlayerService.type";
 
 export const usePokemonDetailStore = create<IPokemonDetailStore>(() => ({
   loading: false,
@@ -14,7 +15,7 @@ export const usePokemonDetailStore = create<IPokemonDetailStore>(() => ({
 }));
 
 export const usePokemonDetailAction = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const getPokemonDetail = (pokemonName: string) => {
     usePokemonDetailStore.setState(() => ({ loading: true, detail: null }));
@@ -26,23 +27,17 @@ export const usePokemonDetailAction = () => {
   };
 
   const catchPokemonAction = (payload: PokemonDetailTransformer) => {
-    const sanitize = {
-      abilities: payload.abilities,
+    const sanitize: TPlayerServicePost = {
       att: (payload.stats.find((q) => q.name == "attack") as any).point,
-      crit: Math.floor(Math.random() * 11),
       def: (payload.stats.find((q) => q.name == "defense") as any).point,
       hp: (payload.stats.find((q) => q.name == "hp") as any).point,
-      str: Math.floor(Math.random() * 11),
-      spd: Math.floor(Math.random() * 11),
       image: payload.image,
-      moves: payload.moves,
       name: payload.name,
-      type: payload.types,
     };
 
     PlayerServices.Create(sanitize)
       .then((res) => {
-        const { name, id, renameCounter, image } = res.data.data;
+        const { name, id, renameCount, image } = res.data.data;
         Swal.fire({
           title: `Berhasil Menangkap ${name}!`,
           text: "Apa kamu ingin menamainya?",
@@ -63,7 +58,7 @@ export const usePokemonDetailAction = () => {
                 await PlayerServices.Update({
                   name: rename,
                   id,
-                  renameCounter,
+                  renameCount,
                 });
               },
               allowOutsideClick: () => !Swal.isLoading(),
@@ -73,9 +68,7 @@ export const usePokemonDetailAction = () => {
                   Swal.fire({
                     imageUrl: image,
                     title: `${result.value} siap menemani petualanganmu`,
-                  }).then(() => navigate('/player'));
-                  
-
+                  }).then(() => navigate("/player"));
                 }
               })
               .catch((error) =>
@@ -84,7 +77,7 @@ export const usePokemonDetailAction = () => {
           }
         });
       })
-      .catch((e) => {
+      .catch(() => {
         Swal.fire({
           title: `Gagal Menangkap ${sanitize.name}!`,
           icon: "error",

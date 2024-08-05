@@ -1,12 +1,18 @@
-const express = require('express')
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
-const pokemonController = require('../../infrastructure/controller/pokemon.controller');
+const {
+  Create,
+  Delete,
+  Find,
+  List,
+  Update,
+} = require("../../infrastructure/persistence/pokemon");
 
-router.get("/", pokemonController.list)
-router.get("/:id", pokemonController.find)
-router.post("/", pokemonController.create)
-router.put("/:id", pokemonController.update)
-router.delete("/:id", pokemonController.delete)
+router.get("/", List);
+router.get("/:id", Find);
+router.post("/", Create);
+router.put("/:id", Update);
+router.delete("/:id", Delete);
 
-module.exports = router
+module.exports = router;
