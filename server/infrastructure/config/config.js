@@ -1,4 +1,5 @@
 require("dotenv").config({ path: `${process.cwd()}/.env` });
+const pg = require("pg")
 
 module.exports = {
   development: {
